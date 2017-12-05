@@ -1,0 +1,30 @@
+
+
+/* Menu */
+
+.navbar .menu-item {
+
+}
+.navbar .menu-item:hover {
+
+}
+.navbar .menu-item-active {
+
+}
+
+.btn {
+    color: gray;
+    border : 1px solid black;
+    padding: 10px;
+    text-decoration: none;
+}
+.btn:hover {
+    background-color: #99ccff;
+    color: black
+
+}
+.active-link {
+    background-color: #33ccff;
+    color: black;
+    text-decoration: double
+}

@@ -1,0 +1,21 @@
+<p>
+  heroes works!
+</p>
+<h2>Heroe's form</h2>
+
+<form>
+  <label for="firstname">First Name</label>
+  <input class="form-control" id="firstname">
+
+  <label for="age">Age</label>
+  <input class="form-control" [(ngModel)]= "myuser.age" id="age" name="age">
+
+  <label for="movie" >favorite movie</label>
+  <select id="movie" class="form-control">
+    <option *ngFor="let movie of movies" [value]='movie'> {{movie}}</option>
+
+  </select>
+
+</form>
+<button (click) = "showDetails(myuser.age)">click me to see hero details</button>
+<hero-details [myInput]="whoisit" ></hero-details>

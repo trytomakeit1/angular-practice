@@ -1,0 +1,38 @@
+<div class="container">
+  <header>
+    <img class="img-responsive" [src]="logoSrc" width="200" alt="logo" />
+    <h1>
+      {{pageTitle}}
+    </h1>
+
+  </header>
+  
+  <div class="row">
+    <div class="col-md-10 col-offset-md-1">
+
+      <!-- * menu * -->
+      <nav class="navbar">
+
+        <ul class="nav nav-pills">
+          <li *ngFor="let menuitem of menu" class="navbar-item">
+
+              <a routerLink="{{menuitem.url}}" class="menu-item nav-link" routerLinkActive="menu-item-active">{{menuitem.name}}</a>
+
+          </li>
+        </ul>
+                   
+      </nav>
+      <!-- /menu  -->
+
+      <!-- * Main content * -->
+     
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+
+
+  <br>
+  <br>
+  <br>
+  <br>
+</div>

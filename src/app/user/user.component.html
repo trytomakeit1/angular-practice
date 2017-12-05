@@ -1,0 +1,20 @@
+<p>
+  If you are a user, login from here
+</p>
+
+<h3 *ngIf="username">Thank you for coming back {{username}}</h3>
+
+
+<form>
+    <label for="username">Username:</label>
+    <input id="username" [(ngModel)]="username" class="form-control" name="username" placeholder="enter your username"/>
+
+    <label id="password">password:</label>
+    <input id="password" class="form-control" name="password" placeholder="enter your password" />
+
+    <button class="btn btn-primary" type="submit">Login</button>
+</form>
+
+
+<h4>If you don't have an account yet, please click <b><a routerLink="/register">here</a></b> to be directed to the registration page.</h4>
+<router-outlet></router-outlet>

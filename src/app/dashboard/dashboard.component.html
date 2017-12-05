@@ -1,0 +1,23 @@
+<p>
+  dashboard works!
+</p>
+
+<h5> Your profile picture</h5>
+<img [src]="profilesrc" width="200" />
+<h5 [ngClass]="'yourclass'">the global title is </h5>{{globaltitle}}
+<p [ngStyle]="{'color':'red', 'font-weight':  weight, 'font-size': size}" *ngFor="let l of list">{{l}}</p>
+<button (click)="increment($event)">increase the size</button>
+<button (click)="weight = weight - 100">decrease the size</button>
+
+<label>write your name for me:</label>
+<input [(ngModel)]="name" placeholder="your name please" name="yourname" type="text" 
+
+/>
+<p>I repeat your name here. {{name}}</p>
+<button #b (click)="addName(name, b)">add my name</button>
+
+
+
+<h3>List of our names:</h3>
+
+<b #it (click)="changeCSS(it)" *ngFor="let name of nameList">{{name}}<br /></b>
