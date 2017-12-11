@@ -1,0 +1,13 @@
+.newline {
+    white-space: pre-line;
+}
+
+.colorbtn {
+
+    box-shadow: 5px 5px 7px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.colorbtn:active {
+    box-shadow: 1px 1px 1px 1px;
+}

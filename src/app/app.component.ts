@@ -1,19 +1,20 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { globalVar } from './globalvar.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers : [globalVar]
 })
 
 
 export class AppComponent {
   menu: any[];
   pageTitle: string;
-  globalAddr: string = "/assets/images/";
   logoSrc: string;
-  constructor (){
+  constructor (private _globalVar: globalVar){
     this.menu = [
       {name: 'Home',
       btnName: 'homebtn',
@@ -27,7 +28,8 @@ export class AppComponent {
     ];
 
     this.pageTitle = 'Tour of Heroes!';
-    this.logoSrc = this.globalAddr + "logo.jpg";
+    console.log(this._globalVar);
+    this.logoSrc = this._globalVar.imageFolder + "logo.jpg";
   }
  
 }

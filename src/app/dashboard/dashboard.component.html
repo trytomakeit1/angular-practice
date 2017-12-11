@@ -4,17 +4,36 @@
 
 <h5> Your profile picture</h5>
 <img [src]="profilesrc" width="200" />
-<h5 [ngClass]="'yourclass'">the global title is </h5>{{globaltitle}}
-<p [ngStyle]="{'color':'red', 'font-weight':  weight, 'font-size': size}" *ngFor="let l of list">{{l}}</p>
-<button (click)="increment($event)">increase the size</button>
-<button (click)="weight = weight - 100">decrease the size</button>
+<div class="dashboard-welcome">
+  <h5 class="newline" [ngClass]="'yourclass'">We wanna tell you: </h5>
+  <span [ngStyle]="{'color': textColor, 'font-size': fontsize}">{{globaltitle}}</span>
+</div>
 
-<label>write your name for me:</label>
-<input [(ngModel)]="name" placeholder="your name please" name="yourname" type="text" 
+<div class="dashboard-game">
+  <p>Change the color here</p>
+  <span (click)="changeTextColor(color)" class="colorbtn" [ngStyle]="{'background-color': color, 'padding': '10px', 'margin': '10px', 'margin-left':0 }" *ngFor="let color of colors">{{color | uppercase }}</span>
+  <div [ngStyle]="{'margin-top': '15px'}">
+    <button (click)="increment()">increase the size</button>
+    <button (click)="decrease()">decrease the size</button>
+  </div>
+  
+  <br /><br />
 
-/>
-<p>I repeat your name here. {{name}}</p>
-<button #b (click)="addName(name, b)">add my name</button>
+  <div class="counter-container">
+    <input type="text" size="3" [value]="fontsize">
+    <span (click)="increment();" [ngStyle]="{'cursor': 'pointer', 'font-size': '17px', 'background-color': '#fef4f2' , 'padding': '2px 4px 1px 4px', 'border': '1px solid black', 'border-radius': '4px'}">+</span>
+    <span (click)="decrease();" [ngStyle]="{'cursor': 'pointer', 'font-size': '18px', 'background-color': '#fef4f2', 'padding': '1px 6px', 'border': '1px solid black', 'border-radius': '4px'}">-</span>
+  </div>
+  <hr>
+  <br />
+  <br />
+
+  <label>write your name for me:</label>
+  <input [(ngModel)]="name" placeholder="your name please" name="yourname" type="text" 
+
+  />
+  <p>I repeat your name here. {{name}}</p>
+  <button #b (click)="addName(name, b)">add my name</button>
 
 
 

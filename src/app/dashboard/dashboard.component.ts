@@ -1,30 +1,43 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, Input, Pipe, ViewChild} from '@angular/core';
+import { globalVar } from '../globalvar.service';
+import { setTitleProvider } from '../services';
 
-import {setTitleProvider} from '../services';
+@Pipe ({
+  name: "uppercase"
+})
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
-  providers: [setTitleProvider]
+  providers: [setTitleProvider, globalVar]
 })
 export class DashboardComponent implements OnInit {
  
-  profilesrc = "../../assets/images";
+ 
   globaltitle: string;
-  list: string[] = ["a", "b"];
   weight: number; size: number;
   newsize : number;
   somename: string;
   nameList: string[];
+  profilesrc: string;
+  colors: string[];
+  textColor: string;
+  changableText: string;
+  fontsize: string;
 
 
-
-  constructor(private _setTitleProvider: setTitleProvider) {
+  constructor(private _setTitleProvider: setTitleProvider,
+  private _globalVar: globalVar) {
 
     this.weight = 700;
-    this.size = 14;
+    this.size = 10;
     this.nameList = ["Eli", "Armi"];
+    this.profilesrc = this._globalVar.imageFolder + "profile.jpg";
+    this.colors= ["green", "red", "orange"];
+    this.textColor = 'black';
+    this.fontsize = this.size + "px";
+
   }
   ngOnInit() {
     this.globaltitle = this._setTitleProvider.title;
@@ -32,18 +45,20 @@ export class DashboardComponent implements OnInit {
     
   }
 
-  increment (e) {
-    console.log(e);
-    this.globaltitle = e.target.innerHTML;
-    
-    console.log("hi", this.size);
-    this.size = this.size + 4;
-    console.log("bye", this.size);
-    
+  changeTextColor(tcolor) {
+    this.textColor = tcolor;
 
   }
 
-  decrease (size) { size--; }
+  increment () {
+    this.size = this.size + 2;
+    this.fontsize = this.size + "px";
+  }
+
+  decrease () {
+    this.size = this.size - 2;
+    this.fontsize = this.size + "px";
+  }
 
   addName(nameToAdd, bb) {
     this.nameList.push(nameToAdd);
@@ -52,5 +67,14 @@ export class DashboardComponent implements OnInit {
 
   changeCSS(el) {
     console.log(el);
+  }
+
+ 
+  ucText: string;
+  uppercase (lcText) {
+    this.ucText = lcText.toUpperCase();
+    console.log(this.ucText);
+    return this.ucText
+
   }
 }
