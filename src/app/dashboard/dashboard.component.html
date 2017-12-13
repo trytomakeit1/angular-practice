@@ -11,13 +11,15 @@
 
 <div class="dashboard-game">
   <p>Change the color here</p>
-  <span (click)="changeTextColor(color)" class="colorbtn" [ngStyle]="{'background-color': color, 'padding': '10px', 'margin': '10px', 'margin-left':0 }" *ngFor="let color of colors">{{color | uppercase }}</span>
+  <span (click)="changeTextColor(color)" class="colorbtn" [ngStyle]="{'background-color': color, 'padding': '10px', 'margin': '10px', 'margin-left':0 }"
+    *ngFor="let color of colors">{{color | uppercase }}</span>
   <div [ngStyle]="{'margin-top': '15px'}">
     <button (click)="increment()">increase the size</button>
     <button (click)="decrease()">decrease the size</button>
   </div>
-  
-  <br /><br />
+
+  <br />
+  <br />
 
   <div class="counter-container">
     <input type="text" size="3" [value]="fontsize">
@@ -29,14 +31,18 @@
   <br />
 
   <label>write your name for me:</label>
-  <input [(ngModel)]="name" placeholder="your name please" name="yourname" type="text" 
-
-  />
+  <input [(ngModel)]="name" placeholder="your name please" name="yourname" type="text" />
   <p>I repeat your name here. {{name}}</p>
   <button #b (click)="addName(name, b)">add my name</button>
+  <br />
+  <h2 *ngIf="gotData">Content:
+    <br/>{{content.title}}</h2>
+  <button (click)="caller()">refresh</button>
 
+  <button (click)="refresher()">refresh1</button>
 
+  <h3>List of our names:</h3>
 
-<h3>List of our names:</h3>
-
-<b #it (click)="changeCSS(it)" *ngFor="let name of nameList">{{name}}<br /></b>
+  <b #it (click)="changeCSS(it)" *ngFor="let name of nameList">{{name}}
+    <br />
+  </b>
